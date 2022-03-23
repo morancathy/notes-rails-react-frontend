@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import CardScan from '../components/CardScan';
 
 const Home = (props) => {
 	const [token, setToken] = useState('');
@@ -23,6 +24,14 @@ const Home = (props) => {
 			) : (
 				<>
           <h1>Hello {loggedInUser}!</h1>
+					<CardScan
+            token={token}
+            setToken={setToken}
+            user={user}
+            setUser={setUser}
+            loggedInUser={loggedInUser}
+            setLoggedInUser={setLoggedInUser}
+          /> 
 				</>
 			)};
 		</div>
