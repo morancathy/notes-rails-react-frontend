@@ -11,12 +11,27 @@ header {
 
 /* ========== Card Scan Component ========== */
 .scan-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   margin-top: 40px;
 }
 
-.scan-button button {
+.file-upload {
+  padding: 40px;
+  width: 300px;
+  background-color: white;
+  border: 1.5px solid black;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.scan-view-button {
   border-radius: 25px;
+  margin: 2rem auto;
   padding: 20px;
   width: 300px;
   height: 150px;
