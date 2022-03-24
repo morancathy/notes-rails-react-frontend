@@ -1,22 +1,37 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import {CardScanView} from "@cardscan.ai/insurance-cardscan-react";
 
 export default function CardScan() {
-	const [token, setToken] = useState('');
   const [sessionToken, setSessionToken] = useState('');
-	const [loggedInUser, setLoggedInUser] = useState('');
+  const [showScan, setShowScan] = useState(true);
+  let navigate = useNavigate();
 
-  useEffect(() => {
-		if (window.localStorage.getItem('token')) {
-			setToken(window.localStorage.getItem('token'));
-			setLoggedInUser(window.localStorage.getItem('loggedInUser'));
-		}
-	}, []);
-
+  // pulls data from scanned card
   const onSuccess = (card) => {
-    console.log("new card: ", card);
+    let cardDetails = {}
+    const {groupNumber, memberNumber, payerName, rxBin, rxPcn, rxGroup, memberName, dependentNames, planName, planId, clientName, startDate, cardSpecificId} = card.details;
+   
+    for (const [key, value] of Object.entries(card.details)){              
+      typeof value === 'object' ? cardDetails[key] = value.value : cardDetails[key] = value
+    }
+    navigate("/carddetails", {state: cardDetails});
   }
+
+  // available cardscan.ai prop  (not yet active)
+  const content = { 
+    startingTitle: "Get Started",
+    startingSubtitle: "Hold card inside rectangle" 
+  }
+
+  // close button (need to customize further)
+  const customCloseButton = () => {
+    return (
+      <button type="button" onClick={() => {setShowScan(false)}}>Close</button>
+    )
+  };
   
+  // authenticate user and provide cardscan token
   const loadScanView = async () => {
 		try {
 			fetch (`http://localhost:3000/cardscan_session`, {
@@ -28,30 +43,39 @@ export default function CardScan() {
 			})
       .then((res) => res.json())
       .then((data) => {
-        console.log("data: ", data)
         setSessionToken(data.token.Token);
       })
+      setShowScan(true)
 		} catch (error) {
 			console.error(error);
 		} 
 	};
 
   return (
-    <>
-  {console.log("sessiontooken", sessionToken)}
-  {console.log("token", token)}
-      { (!sessionToken)
-      ? <button onClick={loadScanView}>Start Scanning</button>
-      : <div>
+    <div className="cardScan">
+      { ((sessionToken) && showScan) ? 
+        <div className="cardScanView">
           <CardScanView
             live={false}
             sessionToken={sessionToken}
             onSuccess={onSuccess}
+            content={content}
+            closeButton={customCloseButton()}   
+
+            ////// Other available cardscan.ai props/////////
+            // onCancel={cardScanCancel}
+            // onError={onError}                     
+            // successIndicator={successIndicator}
+            // errorIndicator={errorIndicator}
+            // indicatorOptions={indicatorOptions}
+            // enableCameraPermissionModal={enableModal}
+            ////////////////////////////////////////////////
+            
           />
-  {console.log("52sessiontooken", sessionToken)}
-  {console.log("53token", token)}
-        </div>         
+        </div>     
+        :
+        <button onClick={loadScanView}>Scan Insurance Card</button>
       }
-    </>
+    </div>
   );
 };
