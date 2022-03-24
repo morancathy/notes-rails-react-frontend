@@ -70,7 +70,9 @@ export default function CardScan() {
 
 	const handleSubmission = (e) => {
     e.preventDefault();
-    fetchSessionToken();
+    
+    if (!sessionToken) fetchSessionToken();
+
     const client = new CardScanApi({
       "sessionToken": sessionToken,
       "live": false
@@ -113,7 +115,7 @@ export default function CardScan() {
             <button 
               className="scan-view-button" 
               onClick={() => {
-                fetchSessionToken();
+                if (!sessionToken) fetchSessionToken();
                 setShowScan(true);
               }}
               >Scan Insurance Card
