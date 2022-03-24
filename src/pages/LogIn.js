@@ -77,6 +77,7 @@ const LogIn = props => {
 
 	return (
 		<div className="LogIn">
+			<header>~ Sign In ~</header>
 			<div className="logInPage">
 				{showForm && (
 					<>
@@ -98,7 +99,7 @@ const LogIn = props => {
 										onChange={handleChange}
 									/>
 									<input
-										className="logInBut btn btn-primary"
+										className="logInBut"
 										type="submit"
 										value="Log In"
 									/>
@@ -106,7 +107,7 @@ const LogIn = props => {
 								</form>
 
 								<button
-									className="regBut btn btn-success"
+									className="regBut"
 									onClick={() => {
 										setToggle(!toggle);
 										displayForm();
@@ -119,7 +120,7 @@ const LogIn = props => {
 							<>
 								<div>Hello, {loggedInUser}! You are logged in.</div>
 								<Link to="/">
-									<button className="logOutBut btn btn-danger" onClick={logout}>
+									<button className="logOutBut" onClick={logout}>
 										Log Out
 									</button>
 								</Link>
@@ -146,7 +147,7 @@ const LogIn = props => {
 							onChange={handleChange}
 						/>
 						<input
-							className="submitBut  btn btn-primary"
+							className="submitBut"
 							type="submit"
 							value="Submit"
 						/>
