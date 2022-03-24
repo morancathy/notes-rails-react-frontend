@@ -74,7 +74,9 @@ export default function CardScan() {
           />
         </div>     
         :
-        <button onClick={loadScanView}>Scan Insurance Card</button>
+        <div className="scan-button">
+          <button onClick={loadScanView}>Scan Insurance Card</button>
+        </div>
       }
     </div>
   );
