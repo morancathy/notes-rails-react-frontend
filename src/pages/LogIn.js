@@ -77,7 +77,7 @@ const LogIn = props => {
 
 	return (
 		<div className="LogIn">
-			<header>~ Sign In ~</header>
+			<header>~ Sign In Page ~</header>
 			<div className="logInPage">
 				{showForm && (
 					<>

@@ -1,8 +1,33 @@
+body {
+  background-color: azure;
+}
+
 header {
   font-size: calc(20px + 1vw);
   text-align: center;
   padding-top: 25px;
   padding-bottom: 25px;
+}
+
+/* ========== Card Scan Component ========== */
+.scan-button {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.scan-button button {
+  border-radius: 25px;
+  padding: 20px;
+  width: 300px;
+  height: 150px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.scan-button button:hover {
+  background-color: #777;
+  color: white;
 }
 
 /* ========== CardDetails Page ========== */
@@ -63,6 +88,7 @@ nav div:hover {
   border-radius: 25px;
   padding: 20px;
   width: 400px;
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
