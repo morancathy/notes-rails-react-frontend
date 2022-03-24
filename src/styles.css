@@ -9,6 +9,11 @@ header {
   padding-bottom: 25px;
 }
 
+/* ========== Home Page ========== */
+.Home {
+  height: 100vh;
+}
+
 /* ========== Card Scan Component ========== */
 .scan-button {
   display: flex;

@@ -30,9 +30,16 @@ export default function CardScan() {
   // close button (need to customize further)
   const customCloseButton = () => {
     return (
-      <button type="button" onClick={() => {setShowScan(false)}}>Close</button>
+      <button type="button" onClick={() => {setShowScan(false), reposition()}}>Close</button>
     )
   };
+
+  const reposition = () =>{
+    window.scroll({
+      top: 0,
+      left: 0
+    })
+  }
 
   useEffect(() => {
     try {
@@ -99,7 +106,9 @@ export default function CardScan() {
         </div>     
         :
         <div className="scan-button">
-          <button className="scan-view-button" onClick={() => setShowScan(true)}>Scan Insurance Card</button>
+          <a href="#cardscan">
+            <button className="scan-view-button" onClick={() => setShowScan(true)}>Scan Insurance Card</button>
+          </a>
           <div className="file-upload">
             <input type="file" name="file" onChange={changeHandler} />
             {isSelected ? (

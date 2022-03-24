@@ -13,20 +13,23 @@ const Home = (props) => {
 	}, []);    
     
 	return (
-		<div>
-			{!token ? (
-				<header>~ Please Log In ~</header>
-			) : (
-				<>	         		
-				<header>~ Hello {loggedInUser}! ~</header>
-					<CardScan
-						props={props}
-            token={token}
-            loggedInUser={loggedInUser}
-          /> 
-				</>
-			)}
-		</div>
+		<>
+			<div className='Home'>
+				{!token ? (
+					<header>~ Please Log In ~</header>
+				) : (
+					<>	         		
+						<header>~ Hello {loggedInUser}! ~</header>
+						<CardScan
+							props={props}
+							token={token}
+							loggedInUser={loggedInUser}
+						/> 
+					</>
+				)}
+			</div>
+			<div id="cardscan"></div>
+		</>
 	);
 };
 
