@@ -41,24 +41,27 @@ export default function CardScan() {
     })
   }
 
-  useEffect(() => {
+  const fetchSessionToken = async () => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:3000/cardscan_session'
+      }
+    }
+
     try {
-			fetch (`http://localhost:3000/cardscan_session`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': 'http://localhost:3000/cardscan_session'
-				},
-			})
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setSessionToken(data.token.Token);
-      })
+			const response = await fetch(`http://localhost:3000/cardscan_session`, options)
+      const data = await response.json()
+      if (data.msg == "OK") {
+        setSessionToken(data.token.Token)
+      } else {
+        console.error(data.msg)
+      }
 		} catch (error) {
 			console.error(error);
 		} 
-  }, [])
+  }
 
   const changeHandler = (event) => {
 		setSelectedFile(event.target.files[0]);
@@ -67,6 +70,7 @@ export default function CardScan() {
 
 	const handleSubmission = (e) => {
     e.preventDefault();
+    fetchSessionToken();
     const client = new CardScanApi({
       "sessionToken": sessionToken,
       "live": false
@@ -84,8 +88,8 @@ export default function CardScan() {
 
   return (
     <div className="cardScan">
-      { (sessionToken && showScan) ? 
-        <div className="cardScanView">
+      { (sessionToken && showScan) 
+      ? <div className="cardScanView">
           <CardScanView
             live={false}
             sessionToken={sessionToken}
@@ -104,10 +108,16 @@ export default function CardScan() {
             
           />
         </div>     
-        :
-        <div className="scan-button">
+      : <div className="scan-button">
           <a href="#cardscan">
-            <button className="scan-view-button" onClick={() => setShowScan(true)}>Scan Insurance Card</button>
+            <button 
+              className="scan-view-button" 
+              onClick={() => {
+                fetchSessionToken();
+                setShowScan(true);
+              }}
+              >Scan Insurance Card
+            </button>
           </a>
           <div className="file-upload">
             <input type="file" name="file" onChange={changeHandler} />
