@@ -1,19 +1,45 @@
-/* Nav Componnent */
 header {
+  font-size: calc(20px + 1vw);
   text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
-header nav {
+/* ========== CardDetails Page ========== */
+.CardDetails h1 {
+  font-size: 20px;
+  text-align: center;
+}
+.CardDetails table {
+  margin: auto;
+}
+.CardDetails table,
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+}
+.CardDetails table th {
+  font-size: 20px;
+  background-color: lightgray;
+}
+
+.CardDetails tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* ========== Nav Componnent ========== */
+nav {
   display: flex;
   justify-content: space-around;
 }
 
-header nav a {
+nav a {
   color: black;
   text-decoration: none;
 }
 
-header nav div {
+nav div {
   font-size: larger;
   background-color: blueviolet;
   color: white;
@@ -23,41 +49,35 @@ header nav div {
   padding: 10px;
 }
 
-header nav div:hover {
+nav div:hover {
   background-color: burlywood;
   color: blueviolet;
 }
-.LogIn {
-  height: 60vh;
-  padding-top: 20px;
-}
 
-/* .LogIn .logInPage {
+/* ============ Login Page ============ */
+.LogIn .logInPage {
   display: flex;
   flex-direction: column;
   visibility: visible;
   margin: 0 auto;
   border-radius: 25px;
   padding: 20px;
-  max-width: 20vw;
+  width: 400px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.logInPage div,
+a {
+  text-align: center;
 }
 
 .LogIn #username {
   margin-top: 50px;
 }
 
-.LogIn #password {
-  background-color: #f0f0f0;
-  margin-bottom: 10px;
-  border: none;
-  width: 100%;
-  height: 7vh;
-  box-shadow: 0 1px 3px #777;
-  padding-left: 12px;
-}
-.LogIn #username {
+.LogIn #password,
+#username {
   background-color: #f0f0f0;
   margin-bottom: 10px;
   border: none;
@@ -71,22 +91,24 @@ header nav div:hover {
   margin: 0 auto;
   border: none;
   border-radius: 6px;
-  font-size: 20px;
   line-height: 48px;
   padding: 0 16px;
-  width: 332px;
   font-size: 20px;
   height: 40px;
   display: block;
   width: 100%;
   margin-bottom: 20px;
+  background-color: #1976d2;
+  color: white;
 }
+
 .LogIn .addLine {
   border-bottom: 1px solid grey;
   max-width: 25vw;
   margin: 0 auto;
 }
-.LogIn .regBut {
+
+button.regBut {
   margin: 0 auto;
   border: none;
   border-radius: 6px;
@@ -96,15 +118,8 @@ header nav div:hover {
   display: inline-block;
   white-space: nowrap;
   margin-top: 20px;
-}
-.LogIn .logOutBut {
-  border-radius: 6px;
-  font-size: 15px;
-  line-height: 24px;
-  padding: 0 8px;
-  width: 75px;
-  margin: 0 auto;
-  margin-top: 30px;
+  background-color: #4caf50;
+  color: white;
 }
 
 .regForm p {
@@ -118,4 +133,17 @@ header nav div:hover {
   font-size: 20px;
   line-height: 48px;
   padding: 0 16px;
-} */
+  background-color: #1976d2;
+  color: white;
+}
+
+button.logOutBut {
+  background-color: #dc3545;
+  color: white;
+  margin: auto 0;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 26px;
+  width: 75px;
+  margin-top: 30px;
+}
