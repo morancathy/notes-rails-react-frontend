@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { CardScanView, CardScanApi } from "@cardscan.ai/insurance-cardscan-react";
+import CloseButton from "./CloseButton";
 
 export default function CardScan() {
   const [sessionToken, setSessionToken] = useState(null);
@@ -25,20 +26,6 @@ export default function CardScan() {
   const content = { 
     startingTitle: "Get Started",
     startingSubtitle: "Hold card inside rectangle" 
-  }
-
-  // close button (need to customize further)
-  const customCloseButton = () => {
-    return (
-      <button type="button" onClick={() => {setShowScan(false), reposition()}}>Close</button>
-    )
-  };
-
-  const reposition = () =>{
-    window.scroll({
-      top: 0,
-      left: 0
-    })
   }
 
   const fetchSessionToken = async () => {
@@ -97,7 +84,7 @@ export default function CardScan() {
             sessionToken={sessionToken}
             onSuccess={onSuccess}
             content={content}
-            closeButton={customCloseButton()}   
+            closeButton={<CloseButton setShowScan={setShowScan} />}   
 
             ////// Other available cardscan.ai props/////////
             // onCancel={cardScanCancel}
