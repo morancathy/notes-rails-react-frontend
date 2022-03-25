@@ -31,9 +31,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -53,16 +50,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Research if the cardscan.ai API is a viable candidate to assist members in scanning their health insurance cards and auto populating data.
+<img src="./src/assets/homepage.png" alt="Home Page" width="600"/>
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-### Built With
-
-* [React.js](https://reactjs.org/)
-* [Ruby.rb](https://reactjs.org/)
+Research project on [cardscan.ai](https://docs.cardscan.ai/) API by [Cathy Moran]() and [Alex Franco](). CardScan.ai is the fastest way to add insurance card scanning to your mobile (iOS, Android) application, web application, or backend systems.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -75,11 +65,28 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+* Upgrage npm and install yarn
   ```sh
-  ruby --version 2.3.6
+  npm install -g npm@latest
+  npm install -g yarn
   ```
+
+* Choose the best Ruby & Node version manager ([ASDF](http://asdf-vm.com/) recommended) and install node and ruby
+  ```sh
+  node --version @~12.16.3
+  ruby --version @~2.3.6
+  ```
+
+* Install rails
+  ```sh
+  gem 'rails', '~> 5.2', '>= 5.2.7'
+  ```
+
+* Install MySQL and all its dependencies
+  ```sh
+  brew install mysql
+  ```
+
 ### Installation
 
 1. Get a free API Key at [https://example.com](https://example.com)
@@ -126,9 +133,8 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+<!-- CONTACT -->
+## Contact
 
 * [Cathy Moran](https://github.com/morancathy)
 * [Alexander Franco](https://github.com/alexfranco12)
@@ -136,19 +142,16 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* ['Ruby on Rails API with JWT Auth Tutorial' - Alex Merced](https://dev.to/alexmercedcoder/ruby-on-rails-api-with-jwt-auth-tutorial-go2)
+* ['Build a Rails API with JWT' - Reinald Reynoso](https://betterprogramming.pub/build-a-rails-api-with-jwt-61fb8a52d833)
+* []()
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
