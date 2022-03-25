@@ -69,19 +69,28 @@ header {
   position: absolute;
   right: 4rem !important;
   top: 4rem !important;
-  margin: 0;
-  border: 0;
-  padding: 0;
   background: red;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 50px !important;
+  height: 50px !important;
   display: flex;
-  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  transition: all 150ms;
+}
+
+.close-btn div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-btn svg {
+  color: #fff;
+  font-size: 30px !important;
+}
+
+.card-guide {
+  /* width: calc(100% - 30vw) !important; */
 }
 
 /* ========== CardDetails Page ========== */
