@@ -24,7 +24,7 @@ header {
 }
 
 /* ========== Card Scan Component ========== */
-.root {
+.cardScanView .root {
   position: absolute !important;
   left: 0;
   top: 0;
@@ -90,7 +90,7 @@ header {
 }
 
 .card-guide {
-  /* width: calc(100% - 30vw) !important; */
+  max-width: calc(var(--video-width) - 10px) !important;
 }
 
 /* ========== CardDetails Page ========== */
