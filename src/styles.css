@@ -89,9 +89,9 @@ header {
   font-size: 30px !important;
 }
 
-.card-guide {
+/* .card-guide {
   max-width: calc(var(--video-width) - 10px) !important;
-}
+} */
 
 /* ========== CardDetails Page ========== */
 .CardDetails h1 {
