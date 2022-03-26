@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { CardScanView, CardScanApi } from "@cardscan.ai/insurance-cardscan-react";
+import CloseButton from "./CloseButton";
 
 export default function CardScan() {
   const [sessionToken, setSessionToken] = useState(null);
@@ -21,27 +22,16 @@ export default function CardScan() {
     navigate("/carddetails", {state: cardDetails});
   }
 
-  // available cardscan.ai prop  (not yet active)
+  // content of cardscan.ai
   const content = { 
-    startingTitle: "Get Started",
-    startingSubtitle: "Hold card inside rectangle" 
-  }
-
-  // close button (need to customize further)
-  const customCloseButton = () => {
-    return (
-      <button type="button" onClick={() => {setShowScan(false), reposition()}}>Close</button>
-    )
-  };
-
-  const reposition = () =>{
-    window.scroll({
-      top: 0,
-      left: 0
-    })
+    defaultAutoTitle: "Get Started",
+    defaultManualTitle: "Take a photo",
+    completedTitle: "Completed!"
   }
 
   const fetchSessionToken = async () => {
+    if (sessionToken) return // if sessionToken already exist, dont get a new one.
+
     const options = {
       method: 'POST',
       headers: {
@@ -70,8 +60,7 @@ export default function CardScan() {
 
 	const handleSubmission = (e) => {
     e.preventDefault();
-    
-    if (!sessionToken) fetchSessionToken();
+    fetchSessionToken();
 
     const client = new CardScanApi({
       "sessionToken": sessionToken,
@@ -88,6 +77,11 @@ export default function CardScan() {
     });
 	};
 
+  // Obtain a session token from cardscan.ai on page reload
+  useEffect(() => {
+    fetchSessionToken();
+  }, [])
+
   return (
     <div className="cardScan">
       { (sessionToken && showScan) 
@@ -97,7 +91,7 @@ export default function CardScan() {
             sessionToken={sessionToken}
             onSuccess={onSuccess}
             content={content}
-            closeButton={customCloseButton()}   
+            closeButton={<CloseButton setShowScan={setShowScan} />}   
 
             ////// Other available cardscan.ai props/////////
             // onCancel={cardScanCancel}
@@ -114,10 +108,7 @@ export default function CardScan() {
           <a href="#cardscan">
             <button 
               className="scan-view-button" 
-              onClick={() => {
-                if (!sessionToken) fetchSessionToken();
-                setShowScan(true);
-              }}
+              onClick={() => setShowScan(true)}
               >Scan Insurance Card
             </button>
           </a>
