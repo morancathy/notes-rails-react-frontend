@@ -5,7 +5,8 @@
   padding: 0;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   width: 100%;
   background-color: azure;
@@ -20,7 +21,6 @@ header {
 
 /* ========== Home Page ========== */
 .Home {
-  
 }
 
 /* ========== Card Scan Component ========== */
@@ -116,6 +116,28 @@ td {
   background-color: #f2f2f2;
 }
 
+/* ========== Profile Page ========== */
+.Profile h1 {
+  font-size: 20px;
+  text-align: center;
+}
+.Profile table {
+  margin: auto;
+}
+.Profile table,
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+}
+.Profile table th {
+  font-size: 20px;
+  background-color: lightgray;
+}
+
+.Profile tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 /* ========== Nav Componnent ========== */
 nav {
   display: flex;
