@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { CardScanView, CardScanApi } from "@cardscan.ai/insurance-cardscan-react";
 import CloseButton from "./CloseButton";
 
-export default function CardScan() {
+export default function CardScan({token}) {
   const [sessionToken, setSessionToken] = useState(null);
   const [showScan, setShowScan] = useState(false);
   const [selectedFile, setSelectedFile] = useState();
-  const [isSelected, setIsSelected] = useState(false)
+  const [isSelected, setIsSelected] = useState(false);
 
   let navigate = useNavigate();
 
@@ -19,6 +19,7 @@ export default function CardScan() {
     for (const [key, value] of Object.entries(card.details)){              
       typeof value === 'object' ? cardDetails[key] = value.value : cardDetails[key] = value
     }
+    postData(cardDetails)
     navigate("/carddetails", {state: cardDetails});
   }
 
@@ -52,6 +53,36 @@ export default function CardScan() {
 			console.error(error);
 		} 
   }
+
+  const postData = async (details) => {
+    try {
+      const response = await fetch(`http://localhost:3000/card_details/`, {
+        method: 'POST',                                                  
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `bearer ${token}`,
+        },
+        body: JSON.stringify({ card_detail:{
+          member_name: details.memberName,
+          member_number: details.memberNumber,
+          payer_name: details.payerName,
+          plan_id: details.planId,
+          plan_name: details.planName,
+          rx_bin: details.rxBin,
+          rx_pcn: details.rxPcn,
+          rx_group: details.rxGroup,
+          dependents: details.dependentNames,
+          start_date: details.startDate,
+          card_specific_id: details.cardSpecificId,
+          group_number: details.groupNumber,
+          client_name: details.clientName
+        }})
+      });
+      const data = await response.json()
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const changeHandler = (event) => {
 		setSelectedFile(event.target.files[0]);
@@ -100,8 +131,7 @@ export default function CardScan() {
             // errorIndicator={errorIndicator}
             // indicatorOptions={indicatorOptions}
             // enableCameraPermissionModal={enableModal}
-            ////////////////////////////////////////////////
-            
+            ////////////////////////////////////////////////            
           />
         </div>     
       : <div className="scan-button">
