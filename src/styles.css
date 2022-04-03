@@ -131,12 +131,26 @@ td {
   padding: 8px;
 }
 .Profile table th {
-  font-size: 20px;
+  font-size: 18px;
   background-color: lightgray;
+}
+
+.Profile table td {
+  font-size: 15px;
 }
 
 .Profile tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+.Profile .card-detail-tables-div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.Profile .card-detail-tables-div .card-detail-table {
+  width: 17rem;
 }
 /* ========== Nav Componnent ========== */
 nav {
