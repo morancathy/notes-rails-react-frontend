@@ -1,7 +1,7 @@
-import React, {useState, useEffect, Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import CardScan from '../components/CardScan';
 
-const Home = (props) => {
+const Home = () => {
 	const [token, setToken] = useState('');
 	const [loggedInUser, setLoggedInUser] = useState('');
 
@@ -21,7 +21,6 @@ const Home = (props) => {
 					<>	         		
 						<header>~ Hello {loggedInUser}! ~</header>
 						<CardScan
-							props={props}
 							token={token}
 							loggedInUser={loggedInUser}
 						/> 
