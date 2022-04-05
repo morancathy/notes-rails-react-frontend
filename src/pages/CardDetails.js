@@ -24,6 +24,7 @@ export default function CardScan() {
             typeof value === 'object' ? cardDetails[key] = value.value : cardDetails[key] = value
           }
           setCard({...cardDetails})
+          postData(cardDetails)
         } else {
           getCardDetails(cardDetails.id)
         }
@@ -39,6 +40,36 @@ export default function CardScan() {
       setCard(cardDetails)
     }
   }, [])
+
+  const postData = async (details) => {
+    try {
+      const response = await fetch(`http://localhost:3000/card_details/`, {
+        method: 'POST',                                                  
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `bearer ${window.localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ card_detail:{
+          member_name: details.member_name,
+          member_number: details.member_number,
+          payer_name: details.payer_name,
+          plan_id: details.plan_id,
+          plan_name: details.plan_name,
+          rx_bin: details.rx_bin,
+          rx_pcn: details.rx_pcn,
+          rx_group: details.rx_group,
+          dependents: details.dependent_names,
+          start_date: details.start_date,
+          card_specific_id: details.card_specific_id,
+          group_number: details.group_number,
+          client_name: details.client_name
+        }})
+      });
+      const data = await response.json()
+    } catch (error) {
+      console.error(error);
+    }
+  };
   
   return (
     <div className="CardDetails">
